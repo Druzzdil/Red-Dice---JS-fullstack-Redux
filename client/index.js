@@ -4,7 +4,7 @@ import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
 import {BrowserRouter, Route, Router, Switch} from 'react-router-dom';
 import promise from 'redux-promise';
-import thunk from 'redux-thunk'
+import thunk from 'redux-thunk';
 
 import Navi from './components/navigation';
 import Home from './components/home';
@@ -13,11 +13,15 @@ import SignUpPage from './components/signup/signuppage';
 // take a look at this a bit closer
 
 
-// ReactDOM.render(<App /> ,document.querySelector('.container'));
+const store = createStore(
+  (state = {}) => state,
+  applyMiddleware(thunk)
+)
+
 
 
 ReactDOM.render(
-  <Provider>
+  <Provider store={store}>
    <BrowserRouter>
     <div>
       <Switch>

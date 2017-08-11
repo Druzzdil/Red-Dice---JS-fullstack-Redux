@@ -3,16 +3,19 @@ import Navi from '../navigation';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import {Link}  from 'react-router-dom'
 import SignUpForm from './signupform';
+import { connect } from "react-redux";
+import { userSignUpRequest } from '../../actions/signUpActions';
 
 
-export default class SignUpPage extends Component {
+ class SignUpPage extends Component {
   constructor(props){
     super(props);
   }
   render() {
+    const { userSignUpRequest } = this.props;
+    console.log(userSignUpRequest, 'igor');
     return (
       <div>
-
         <MuiThemeProvider>
           <div>
           <Navi />
@@ -24,7 +27,7 @@ export default class SignUpPage extends Component {
         <div className="row">
           <div className="col-lg-4 col-lg-offset-4">
             <div className="input-group">
-              <SignUpForm />
+              <SignUpForm userSignUpRequest={userSignUpRequest}/>
             </div>
           </div>
         </div>
@@ -32,3 +35,11 @@ export default class SignUpPage extends Component {
     );
   }
 }
+
+
+SignUpPage.propTypes  = {
+  userSignUpRequest: React.PropTypes.func.isRequired
+}
+
+
+export default(connect(null, {userSignUpRequest})(SignUpPage));
