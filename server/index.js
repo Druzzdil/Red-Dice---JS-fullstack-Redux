@@ -1,16 +1,25 @@
-const express = require('express');
-const path = require('path');
-const app = express();
-const publicDir = process.argv[2] || __dirname + '/public';
+import express from 'express';
+import path from 'path';
 
-app.get("/", function (req, res) {
-  res.sendFile(path.join(publicDir, "/index.html"));
+import webpack from 'webpack';
+import webpackMiddleware from 'webpack-dev-middleware';
+import webpackHotMiddleware from 'webpack-hot-middleware';
+import webpackConfig from '../webpack.config.dev';
+// require("style-loader!css-loader!less-loader!./bootstrap-styles.loader!./bootstrap.config.js");
+// require("./bootstrap-scripts.loader!./bootstrap.config.js");
+let app = express();
+const compiler = webpack(webpackConfig);
+
+app.use(webpackMiddleware(compiler));
+
+app.use(webpackHotMiddleware(compiler, {
+  hot: true,
+  publicPath: webpackConfig.output.publicPath,
+  noInfo: true
+}))
+
+app.get('/*', (req, res) => {
+  res.sendFile(path.join(__dirname, './index.html'));
 });
 
-
-const port = process.env.PORT || 3000;
-
-app.listen(port, () => {
-  console.log(port, 'app using port 3000')
-})
-
+app.listen(3000, () => console.log('Running on localhost:3000'));
