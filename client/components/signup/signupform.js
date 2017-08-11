@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import timezones from '../../data/timezones';
+import _ from 'lodash'
 
 export default class SignUpForm extends Component {
   constructor(props){
@@ -27,11 +29,17 @@ export default class SignUpForm extends Component {
 
 
   render() {
+
+    //a nice method here, mapping through another file object
+    const options = _.map(timezones, (val, key) =>
+      <option key={val} value={val}>{key}</option>
+    );
+
     return (
       <div>
         <h1 className="text-center">Join Our community</h1>
         <form onSubmit={this.onSubmit}>
-          <div className="form-group centered">
+          <div className="form-group">
             <label className="control-label">Username</label>
             <input
                 type="text"
@@ -41,7 +49,7 @@ export default class SignUpForm extends Component {
                 className="form-control"/>
           </div>
 
-          <div className="form-group centered">
+          <div className="form-group" style={this.styles}>
             <label className="control-label">Password</label>
             <input
                 type="text"
@@ -51,7 +59,7 @@ export default class SignUpForm extends Component {
                 className="form-control"/>
           </div>
 
-          <div className="form-group centered">
+          <div className="form-group">
             <label className="control-label">Password confirmation</label>
             <input
                 type="text"
@@ -61,20 +69,22 @@ export default class SignUpForm extends Component {
                 className="form-control"/>
           </div>
 
-          <div className="form-group centered">
+          <div className="form-group">
             <label className="control-label">Timezone</label>
-            <input
+            <select
                 type="text"
                 value={this.state.timezone}
                 onChange={this.onChange}
                 name="timezone"
-                className="form-control"/>
+                className="form-control">
+                <option value="" disabled>Choose your timezone</option>
+                {options}
+                </select>
           </div>
-          <div className="form-group">
-            <button className="btn btn-primary btn-lg">
-              Sign up
-            </button>
+          <div className="checkbox">
+            <label></label>
           </div>
+          <button type="submit" className="btn btn-default">Submit</button>
         </form>
       </div>
     );
