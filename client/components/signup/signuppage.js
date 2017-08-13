@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import Navi from '../navigation';
 
-import NaviLogo from '../navigationLogo';
-
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import {Link}  from 'react-router-dom'
 import SignUpForm from './signupform';
@@ -13,14 +11,32 @@ import { userSignUpRequest } from '../../actions/signUpActions';
  class SignUpPage extends Component {
   constructor(props){
     super(props);
+    this.state = {
+      path: ''
+    }
   }
+
+
+urlPath() {
+  let path = this.props.location.pathname;
+  if(path === '/'){
+    return <Link to ="/signup">Sign Up</Link>
+  } else {
+  return (
+      <div className="navbar-brand" style={{float: 'right', display: 'block'}}>
+            <Link to="/" className="btn btn-outline-success my-2 my-sm-0" style={{float: 'right'}} type="submit">Back</Link>
+        </div>
+      )
+  }
+}
+
   render() {
     const { userSignUpRequest } = this.props;
     return (
       <div>
         <MuiThemeProvider>
           <div>
-            <NaviLogo/>
+             {this.urlPath()}
           </div>
         </MuiThemeProvider>
         <div className="row">
