@@ -8,6 +8,26 @@ import { connect } from "react-redux";
 import { userSignUpRequest } from '../../actions/signUpActions';
 
 
+const buttonMain = {
+  float: 'right',
+  textTransform: 'uppercase',
+  fontSize: '.9em',
+  letterSpacing: '.1em',
+  backgroundColor: '79589F',
+  transition: 'background 0.1s linear',
+  borderRadius: '3px',
+  display: 'inline-block',
+  margin:'5px 0',
+  padding: '6px 14px',
+  border: 'none',
+  fontWeight: 'bold',
+  textAlign: 'center',
+  textDecoration: 'none',
+  fontSize: '13px',
+  position: 'relative',
+  cursor: 'pointer'
+}
+
  class SignUpPage extends Component {
   constructor(props){
     super(props);
@@ -23,10 +43,10 @@ urlPath() {
     return <Link to ="/signup">Sign Up</Link>
   } else {
   return (
-      <div className="navbar-brand" style={{float: 'right', display: 'block'}}>
-            <Link to="/" className="btn btn-outline-success my-2 my-sm-0" style={{float: 'right'}} type="submit">Back</Link>
-        </div>
-      )
+    <div className="navbar-brand" style={{float: 'right', display: 'block'}}>
+          <Link to="/"  style={buttonMain} type="submit">Back</Link>
+      </div>
+    )
   }
 }
 
@@ -35,9 +55,15 @@ urlPath() {
     return (
       <div>
         <MuiThemeProvider>
-          <div>
-             {this.urlPath()}
-          </div>
+          <nav className="navbar navbar-light">
+            <div className="navbar-brand">
+              <img src="https://assets-cdn.github.com/images/modules/logos_page/Octocat.png" width="30" height="30" className="d-inline-block align-top" alt="" style={{display: 'inline-block'}}/>
+              <p style={{display: 'inline-block'}}>Locus</p>
+            </div>
+            <div>
+              {this.urlPath()}
+            </div>
+          </nav>
         </MuiThemeProvider>
         <div className="row">
           <div className="col-lg-4 col-lg-offset-4">
@@ -55,6 +81,5 @@ urlPath() {
 SignUpPage.propTypes  = {
   userSignUpRequest: React.PropTypes.func.isRequired
 }
-
 
 export default(connect(null, {userSignUpRequest})(SignUpPage));

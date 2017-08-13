@@ -25,7 +25,9 @@ plugins: [
       }
     ]
   },
+
   resolve: {
     extentions: [ '', '.js' ]
-  }
+  },
+  // devServer: { 'hide-modules': true }
 }

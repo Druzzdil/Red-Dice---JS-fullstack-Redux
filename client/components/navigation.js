@@ -4,14 +4,32 @@ import {Link}  from 'react-router-dom'
 import SignUpPage from './signup/signuppage';
 
 
+const buttonMain = {
+  float: 'right',
+  textTransform: 'uppercase',
+  fontSize: '.9em',
+  letterSpacing: '.1em',
+  backgroundColor: '79589F',
+  transition: 'background 0.1s linear',
+  borderRadius: '3px',
+  display: 'inline-block',
+  margin:'5px 0',
+  padding: '6px 14px',
+  border: 'none',
+  fontWeight: 'bold',
+  textAlign: 'center',
+  textDecoration: 'none',
+  fontSize: '13px',
+  position: 'relative',
+  cursor: 'pointer'
+}
+
 
 export default class Navi extends React.Component {
 
   constructor(props) {
     super(props);
   }
-
-
 
   render() {
     return (
@@ -22,7 +40,7 @@ export default class Navi extends React.Component {
             <p style={{display: 'inline-block'}}>Locus</p>
           </div>
           <div className="navbar-brand" style={{float: 'right', display: 'block'}}>
-            <Link to="/signup" className="btn btn-outline-success my-2 my-sm-0" style={{float: 'right'}} type="submit">Sign Up</Link>
+            <Link to="/signup" style={buttonMain} type="submit">Sign Up</Link>
           </div>
         </nav>
       </div>

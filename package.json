@@ -24,10 +24,11 @@
   "dependencies": {
     "axios": "^0.16.2",
     "babel-preset-stage-1": "^6.1.18",
+    "body-parser": "^1.17.2",
     "bootstrap": "^3.3.7",
     "bootstrap-webpack-loader": "0.0.7",
     "express": "^4.14.0",
-    "lodash": "^3.10.1",
+    "lodash": "^4.17.4",
     "material-ui": "^0.18.7",
     "react": "^15.1.0",
     "react-dom": "^15.1.0",
@@ -38,6 +39,7 @@
     "redux": "^3.0.4",
     "redux-form": "^7.0.3",
     "redux-promise": "^0.5.3",
-    "redux-thunk": "^2.2.0"
+    "redux-thunk": "^2.2.0",
+    "validator": "^8.0.0"
   }
 }

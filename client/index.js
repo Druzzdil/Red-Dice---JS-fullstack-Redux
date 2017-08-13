@@ -15,7 +15,7 @@ import SignUpPage from './components/signup/signuppage';
 const store = createStore(
   (state = {}) => state,
   applyMiddleware(thunk)
-)
+);
 
 // create default empty store to store the data :)
 

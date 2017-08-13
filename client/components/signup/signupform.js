@@ -1,17 +1,17 @@
 import React, { Component } from 'react';
 import timezones from '../../data/timezones';
-import _ from 'lodash'
+import _ from 'lodash';
 
 
 export default class SignUpForm extends Component {
   constructor(props){
     super(props);
     this.state = {
-      username: "",
-      email: "",
-      password: "",
-      passwordConfirmation: "",
-      timezone: ""
+      username: '',
+      email: '',
+      password: '',
+      passwordConfirmation: '',
+      timezone: ''
     }
     this.onChange = this.onChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
@@ -23,16 +23,18 @@ export default class SignUpForm extends Component {
         [e.target.name]: e.target.value
     })
   }
+
+
   onSubmit(e){
+      const { userSignUpRequest } = this.props;
       e.preventDefault();
       this.props.userSignUpRequest(this.props);
-      console.log(this.props);
+      console.log(this.props, userSignUpRequest, ' igororororororor')
   }
 
   render() {
-
     //a nice method here, mapping through another file object
-    const options = _.map(timezones, (val, key) =>
+    const timeZonesList = _.map(timezones, (val, key) =>
       <option key={val} value={val}>{key}</option>
     );
 
@@ -79,7 +81,7 @@ export default class SignUpForm extends Component {
                 name="timezone"
                 className="form-control">
                 <option value="" disabled>Choose your timezone</option>
-                {options}
+                {timeZonesList}
                 </select>
           </div>
           <div className="checkbox">
