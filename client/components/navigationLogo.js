@@ -5,13 +5,11 @@ import SignUpPage from './signup/signuppage';
 
 
 
-export default class Navi extends React.Component {
+export default class NaviLogo extends React.Component {
 
   constructor(props) {
     super(props);
   }
-
-
 
   render() {
     return (
@@ -22,7 +20,7 @@ export default class Navi extends React.Component {
             <p style={{display: 'inline-block'}}>Locus</p>
           </div>
           <div className="navbar-brand" style={{float: 'right', display: 'block'}}>
-            <Link to="/signup" className="btn btn-outline-success my-2 my-sm-0" style={{float: 'right'}} type="submit">Sign Up</Link>
+            <Link to="/" className="btn btn-outline-success my-2 my-sm-0">Back</Link>
           </div>
         </nav>
       </div>

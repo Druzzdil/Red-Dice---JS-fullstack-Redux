@@ -85,7 +85,7 @@ export default class SignUpForm extends Component {
           <div className="checkbox">
             <label></label>
           </div>
-          <button type="submit" className="btn btn-default">Submit</button>
+          <button type="submit" className="btn btn-primary">Submit</button>
         </form>
       </div>
     );

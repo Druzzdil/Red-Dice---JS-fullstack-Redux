@@ -7,17 +7,18 @@ import promise from 'redux-promise';
 import thunk from 'redux-thunk';
 
 import Navi from './components/navigation';
+import NaviLogo from './components/navigationLogo';
 import Home from './components/home';
 import SignUpPage from './components/signup/signuppage';
-// const createStoreWithMiddleware = applyMiddleware(thunk, promise)(createStore);
-// take a look at this a bit closer
+
 
 
 const store = createStore(
   (state = {}) => state,
   applyMiddleware(thunk)
 )
-
+// 
+// create default empty store to store the data :)
 
 
 ReactDOM.render(
